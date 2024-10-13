@@ -45,4 +45,9 @@ module Authentication
   def after_authentication_url
     session.delete(:return_to_after_authenticating) || root_url
   end
+
+  def terminate_session
+    Current.session.destroy
+    cookies.delete(:session_id)
+  end
 end
