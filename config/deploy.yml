@@ -9,8 +9,6 @@ servers:
   web:
     hosts:
     - 160.251.209.36
-    options:
-      "add-host": host.docker.internal:host-gateway
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -99,8 +97,6 @@ accessories:
   db:
     image: postgres:16.1
     host: 160.251.209.36
-    options:
-      "add-host": host.docker.internal:host-gateway
     volumes:
       - /var/lib/postgresql/data:/var/lib/postgresql/data
     env:
