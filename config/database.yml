@@ -87,8 +87,8 @@ production:
   primary: &primary_production
     <<: *default
     database: rails_8_example_production
-    username: rails_8_example
-    password: <%= ENV["RAILS_8_EXAMPLE_DATABASE_PASSWORD"] %>
+    username: <%= ENV["POSTGRES_USER"] %>
+    password: <%= ENV["POSTGRES_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: rails_8_example_production_cache
