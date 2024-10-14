@@ -7,7 +7,10 @@ image: definc/rails_8_example
 # Deploy to these servers.
 servers:
   web:
+    hosts:
     - 160.251.209.36
+    options:
+      "add-host": host.docker.internal:host-gateway
   # job:
   #   hosts:
   #     - 192.168.0.1
