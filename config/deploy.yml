@@ -95,6 +95,7 @@ builder:
 # Use accessory services (secrets come from .kamal/secrets).
 accessories:
   db:
+    service: db
     image: postgres:16.1
     host: 160.251.209.36
     volumes:
