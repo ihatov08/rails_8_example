@@ -1,2 +1,8 @@
-<h1>Registrations#new</h1>
-<p>Find me in app/views/registrations/new.html.erb</p>
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<%= form_with url: registration_path do |form| %>
+  <%= form.email_field :email_address, required: true, autofocus: true, placeholder: "Enter your email address" %><br>
+  <%= form.password_field :password, required: true, placeholder: "Enter your password", maxlength: 72 %><br>
+  <%= form.submit "Sign up" %>
+<% end %>
+<br>
