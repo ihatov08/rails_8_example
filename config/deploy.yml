@@ -33,6 +33,8 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+    - POSTGRES_USER
+    - POSTGRES_PASSWORD
   clear:
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
@@ -89,21 +91,18 @@ builder:
 #   user: app
 
 # Use accessory services (secrets come from .kamal/secrets).
-# accessories:
-#   db:
-#     image: mysql:8.0
-#     host: 192.168.0.2
-#     port: 3306
-#     env:
-#       clear:
-#         MYSQL_ROOT_HOST: '%'
-#       secret:
-#         - MYSQL_ROOT_PASSWORD
-#     files:
-#       - config/mysql/production.cnf:/etc/mysql/my.cnf
-#       - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
-#     directories:
-#       - data:/var/lib/mysql
+accessories:
+  db:
+    image: postgres:16.1
+    host: 160.251.209.36
+    options:
+      "add-host": host.docker.internal:host-gateway
+    volumes:
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
+    env:
+      secret:
+        - POSTGRES_USER
+        - POSTGRES_PASSWORD
 #   redis:
 #     image: redis:7.0
 #     host: 192.168.0.2
